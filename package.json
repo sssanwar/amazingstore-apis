@@ -1,0 +1,27 @@
+{
+  "name": "amazingstore-apis",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "https://github.com/sssanwar/amazingstore-apis.git",
+  "author": "Stephen Anwar <stephen.anwar@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist; tsc",
+    "test": "jest --watch src"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/jest": "^26.0.7",
+    "@types/node": "^14.0.27",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "serverless-offline": "^6.5.0",
+    "serverless-plugin-typescript": "^1.1.9",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.5.0"
+  }
+}
