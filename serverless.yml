@@ -4,10 +4,6 @@ plugins:
   - serverless-plugin-typescript
   - serverless-offline
 
-custom:
-  webpack:
-    config: ../webpack.config.js
-
 provider:
   name: aws
   runtime: nodejs12.x
