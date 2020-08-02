@@ -33,8 +33,8 @@ To add a completely new rule, we can simply create a new class in the model and 
 Please follow these steps to run this project locally:
 
 1. Clone or download this project
-2. Install yarn or npm
+2. Install yarn
 3. Go to the directory and type in **yarn install**
-4. Type in **sls offline** to run this project as an offline Lambda equivalent
+4. Type in **sls offline** to run this project as an offline AWS Lambda equivalent
 5. By config, the project will be hosted on port 3100
-6. Follow the steps in **amazingstore-client**, to run the React-based client.
+6. Follow the steps in **amazingstore-client**, to run the React-based client
