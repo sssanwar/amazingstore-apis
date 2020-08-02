@@ -21,7 +21,12 @@ export class ShoppingCart {
     return this._items.flatMap(item =>
       item.product.promotions.flatMap(p => {
         const appliedDiscount = p.discountRule.calculateDiscount(item)
-        return appliedDiscount ? [appliedDiscount] : []
+        if (appliedDiscount) {
+          // Add product name to description
+          appliedDiscount.description = `${item.product.name}: ${appliedDiscount.description}`
+          return appliedDiscount
+        }
+        return []
       })
     )
   }
