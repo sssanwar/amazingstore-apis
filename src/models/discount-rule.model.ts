@@ -8,6 +8,7 @@ export enum DiscountRuleType {
 }
 
 export abstract class DiscountRule {
+  abstract description: string
   template: string
 
   constructor(template: string) {

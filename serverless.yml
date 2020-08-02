@@ -4,6 +4,10 @@ plugins:
   - serverless-plugin-typescript
   - serverless-offline
 
+custom:
+  serverless-offline:
+    httpPort: 3100
+
 provider:
   name: aws
   runtime: nodejs12.x

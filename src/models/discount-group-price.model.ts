@@ -13,17 +13,22 @@ export class DiscountGroupPrice extends DiscountRule {
     this.groupPrice = params.groupPrice
   }
 
-  calculateDiscount(item: CartItem): AppliedDiscount {
+  get description(): string {
+    return this.template
+      .replace(/\{groupSize\}/gi, this.groupSize.toString())
+      .replace(/\{groupPrice\}/gi, this.groupPrice.toString())
+  }
+
+  calculateDiscount(item: CartItem): AppliedDiscount | undefined {
     const multiplier = Math.floor(item.quantity / this.groupSize)
+    if (multiplier === 0) return undefined
     const preDiscountPrice = item.quantity * item.product.unitPrice
     const discountAmount =
       preDiscountPrice -
       (multiplier * this.groupPrice + (item.quantity - multiplier * this.groupSize) * item.product.unitPrice)
     return {
       amount: discountAmount,
-      description: this.template
-        .replace(/\{groupSize\}/gi, this.groupSize.toString())
-        .replace(/\{groupPrice\}/gi, (this.groupPrice * multiplier).toString())
+      description: this.description
     }
   }
 }

@@ -13,15 +13,19 @@ export class DiscountItemCount extends DiscountRule {
     this.reduceCountBy = params.reduceCountBy
   }
 
-  calculateDiscount(item: CartItem): AppliedDiscount {
+  get description(): string {
+    return this.template
+      .replace(/\{groupSize\}/gi, this.groupSize.toString())
+      .replace(/\{reducedCount\}/gi, (this.groupSize - this.reduceCountBy).toString())
+      .replace(/\{reduceCountBy\}/gi, this.reduceCountBy.toString())
+  }
+
+  calculateDiscount(item: CartItem): AppliedDiscount | undefined {
     const multiplier = Math.floor(item.quantity / this.groupSize)
+    if (multiplier === 0) return undefined
     return {
       amount: item.product.unitPrice * multiplier * this.reduceCountBy,
-      description: this.template
-        .replace(/\{groupSize\}/gi, this.groupSize.toString())
-        .replace(/\{quantity\}/gi, item.quantity.toString())
-        .replace(/\{reducedCount\}/gi, (this.groupSize - this.reduceCountBy).toString())
-        .replace(/\{reduceCountBy\}/gi, this.reduceCountBy.toString())
+      description: this.description
     }
   }
 }

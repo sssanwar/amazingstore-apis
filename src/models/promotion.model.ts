@@ -3,12 +3,14 @@ import { DiscountRule } from './discount-rule.model'
 
 export class Promotion {
   id: number
-  name: string
   discountRule: DiscountRule
 
   constructor(id: number, name: string, discountRule: DiscountRule) {
     this.id = id
-    this.name = name
     this.discountRule = discountRule
+  }
+
+  get description(): string | undefined {
+    return this.discountRule ? this.discountRule.description : undefined
   }
 }
